@@ -62,3 +62,11 @@ Algunos selectores para buscar el objetivo de la regla css son:
         color: #FF0000;
     }
 }
+
+
+/*
+ para algo con clase container que ademas tenga la clase grilla-ejemplo
+*/
+.container.grilla-ejemplo{
+    text-align: center;/* Texto centrado */
+}

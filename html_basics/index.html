@@ -16,8 +16,33 @@
 
 </head>
 <body>
+    <!---Barra de navegación, con clase sticky-top que la hace quedarse arriba -->
+    <nav class="navbar navbar-expand-lg sticky-top bg-secondary border-bottom border-body">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Logo_DuocUC.svg/2560px-Logo_DuocUC.svg.png" alt="Logo" height="24" class="d-inline-block align-text-top">
+                Bootstrap
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar1" aria-controls="navbar1" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbar1">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Tablas</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Login</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+    </nav>
     <div class="container-lg">
-        <h1>Conceptos basicos de Html, esto es un h1, los h's son encabezados y van del h1 al h6.</h1>
+        <h1>Conceptos basicos de Html</h1>
         <h2>Por buena practica solo deberia haber un h1 por vista, usar los siguientes para organizar ideas segun jerarquia</h2>
 
         <h3>Algunos elementos basicos:</h3>
@@ -101,10 +126,10 @@
 
         <div class="card">
             <div class="card-header">
-                Grilla...
+                Grilla de bootstrap
             </div>
             <div class="card-body">
-                <div class="container">
+                <div class="container grilla-ejemplo">
                     <div class="row">
                         <div class="col-sm-6">
                             Columna de 6
@@ -159,11 +184,11 @@
 
 
         <div class="card">
-            <div class="card-header">Formulario con grilla y validación HTML5</div>
+            <div class="card-header">Formulario validación HTML5</div>
             <!--Explicaremos detalles de esto en clase :D -->
             <div class="card-body">
                 <!-- Le damos la case row, para que sea un contenedor -->
-                <form action="https://kgames-serverless-api-delta.vercel.app/api/tester" class="container">
+                <form action="https://kgames-serverless-api-delta.vercel.app/api/tester" method="post" class="container">
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
                         <input type="email" required class="form-control" id="email" placeholder="name@example.com">
@@ -200,7 +225,7 @@
                     </div>
 
                     <div class="form-check mb-3">
-                        <input required class="form-check-input" type="checkbox" value="" name="check" id="check">
+                        <input required class="form-check-input" type="checkbox" value="confirmed" name="check" id="check">
                         <label class="form-check-label" for="check">
                           Estoy segurit@ de lo que dije...
                         </label>
