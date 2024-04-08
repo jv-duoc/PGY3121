@@ -1,0 +1,64 @@
+/*
+Este es un comentario en css
+En esta hoja de estilos definiremos algunas mejoras que queremos hacerle a la visualización de nuestra pagina
+
+Algunos selectores para buscar el objetivo de la regla css son:
+    # id
+    . clase
+    * comodin
+    : pseudo elemento o algun estado
+*/
+
+
+/* Se aplicara a lo que sea, cuando tenga el estado "hover", el estado hover es cuando el usuario pasa el mouse por encima */
+*:hover{
+   /*
+    Para ejemplo de la demo servira esto para que cuando pasemos el mouse por encima
+    salga un outline de 1px, punteado y color rojo
+    esto se podria escribir por partes igualmente:
+    outline-width: 1px;
+    outline-style: dashed;
+    outline-color: red;
+   */
+
+   outline: 1px dashed red; 
+}
+
+
+
+/*
+    Se aplicara el elemento cuyo id sea "ejemplo-span"
+*/
+#ejemplo-span{
+    /* Text transform: permite aplicar cambios a las letras del texto, como cambiar todo a mayus, minusculas, etc */
+    text-transform: lowercase;
+    /*Cambiado el tipo de fuente*/
+    font-family: monospace;
+}
+
+
+/*
+    Este selector se aplicara a todos los elemntos que tegan la clase card
+*/
+.card{
+    /*
+        Agreagamos 8px al margen inferior, recordar que el margen es el espacio blanco que se genera desde fuera de el objeto actual
+    */
+    margin-bottom: 8px;
+
+
+    /*
+     ya que este anchor esta dentro de .card el selector se convierte en:
+     "Dentro de un bloque con clase .card si tiene un hijo en algun nivel que sea un anchor..."
+    */
+    a{
+        /*
+            color cambia el color del texto, este caso del link que esta dentro algo con clase .card
+            en html/css los colores generalmente se definen en tres formas
+            * Nombres predeterminados como red,blue, yellow
+            * Formato HEX #RGB
+            * formato rgba del tipo rgba(255,10,75,1)
+        */
+        color: #FF0000;
+    }
+}
