@@ -17,13 +17,24 @@
                 font-family: monospace;
             }
         }
+        .rojo{
+            color:red;
+            font-family: monospace;
+        }
+
+        .linea-consola{
+            color:chocolate;
+        }
+
     </style>
 </head>
 <body>
-    <h1>Intento 2 de JS</h1>
+    <h1 id="titulo">Intento 2 de JS</h1>
 
-    <div id="consola-impostor">
+    <div id="consola-impostor" onclick="clickConsola()">
     </div>
+
+    <button id="btn-fecha" class="btn btn-primary w-100">Escribe la fecha actual</button>
 
     <script src="funciones.js"></script>
     <script>
@@ -34,47 +45,47 @@
         let treintaComaDos = 30.2;
         treinta = 25.5;
 
-        console.log(treinta);
+        escribir(treinta);
 
         //string
 
         treinta = 'treinta';
-        console.log(treinta);
+        escribir(treinta);
 
         treinta = treinta + ' es '+ 30;
 
         let str1 = '20yyf';
         let suma = str1 + 30;
-        console.log(suma);
+        escribir(suma);
 
         let veinte = Number(str1);
-        console.log(30+veinte);
+        escribir(30+veinte);
 
-        console.log(100/0);
+        escribir(100/0);
 
         let str2 = String(30);
-        console.log(str2+30);
+        escribir(str2+30);
 
 
         let bit = false;
 
         var bit2 = Boolean('');
-        console.log(bit2)
+        escribir(bit2)
 
         if('asda'){
-            console.log('Entramos al if!')
+            escribir('Entramos al if!')
         }
         //array
 
         let array = [3,5,2];
-        console.log(array);
+        escribir(array);
         array[1]=1000;
         array.unshift(25);
-        console.log(array);
+        escribir(array);
 
         let array2 = array;
         array2.push(123123213);
-        console.log(array,array2);
+        escribir(array,array2);
 
         //objeto
 
@@ -89,32 +100,32 @@
         let perrito = new Perro('azul','mani');
         perrito.edad = 25;
         perrito.color = false;
-        console.log(perrito);
+        escribir(perrito);
 
         let perritoAnon = {
             nombre: 'Mani2',
             color:'Dorado'
         };
 
-        console.log(perritoAnon);
+        escribir(perritoAnon);
         perritoAnon.edad = 50;
-        console.log(perritoAnon);
+        escribir(perritoAnon);
 
         //declarar funciones
 
     
         function sumar(arg1,arg2){
-            console.log('Sumanding');
+            escribir('Sumanding');
 
             let resultado = arg1 + arg2;
             return resultado;
-            console.log('sumado!');
+            escribir('sumado!');
         }
 
         let suma2 = sumar(5,2);
-        console.log(suma2);
+        escribir(suma2);
 
-        console.log(promedio(32,5));
+        escribir(promedio(32,5));
 
         function promedio(...args){
             let sumadaPromedio = 0;
@@ -125,32 +136,32 @@
         }
 
         let prom = promedio(5,6,7);
-        console.log(prom);
+        escribir(prom);
 
         //declarar funcion de flecha
 
         let flecha = () =>{
-            console.log('flecha ejecutada');
+            escribir('flecha ejecutada');
             return true;
         }
 
         function ejectutarParametro(arg1){
-            console.log('ejecutar parametro:');
+            escribir('ejecutar parametro:');
             arg1();
         }
 
         ejectutarParametro(flecha);
 
         perritoAnon.funcion = flecha;
-        console.log(perritoAnon);
+        escribir(perritoAnon);
         perritoAnon.funcion2 = () =>{
-            console.log('Funcuion2 ejecutada');
+            escribir('Funcuion2 ejecutada');
         };
         perritoAnon.funcion();
         perritoAnon.funcion2();
 
         let flecha2 = (parametro) =>{
-            console.log('flecha ejecutada:',parametro);
+            escribir('flecha ejecutada:',parametro);
             return true;
         }
 
@@ -164,7 +175,7 @@
 
         let cuartoDeLibra = cuarto('hamburguesa','queso','pepinillo');
 
-        console.log(cuartoDeLibra);
+        escribir(cuartoDeLibra);
 
     
 
@@ -173,11 +184,64 @@
                 return 'Pan|Hamburguesa|queso|Pollo|Pan para:'+quien
             }
             let nuevaHamburguesa = hamburguesaRara('eduardo');
-            console.log(nuevaHamburguesa);
+            escribir(nuevaHamburguesa);
         }
         pedidoDeEduardo();
-        hamburguesaRara();
+        
+        //continuamos con targeting
 
+        // document, navigator
+        const titulo = document.getElementById('titulo');
+        escribir(titulo);
+        titulo.innerText = 'Consola impostor';
+        titulo.classList.add('rojo');
+
+        limpiarConsola();
+
+        escribir('Hola mundo!');
+        
+        escribir('Nuevo texto');
+
+        function escribir(texto){
+            const consola = document.querySelector('#consola-impostor');
+            //todos las clases rojos 
+            //const rojos = document.querySelectorAll('.rojo');
+            const nuevoP = document.createElement('p');
+            nuevoP.classList.add('linea-consola');
+            nuevoP.innerText = texto;
+
+            consola.appendChild(nuevoP);
+        }
+
+        function limpiarConsola(){
+            const consola = document.querySelector('#consola-impostor');
+            consola.innerHTML = '';
+        }
+
+        function clickConsola(){
+            const fechaActual = new Date();
+            escribir('Clickeaste en la consola a las '+ fechaActual);
+        }
+
+        const btnFecha = document.getElementById('btn-fecha');
+
+        let flechaBtn = () =>{
+            escribir('Cliqueaste en el boton  a las'+ new Date());
+        } 
+
+        btnFecha.addEventListener('click',()=>{
+            escribir('Click en el boton por una funcion de flecha no guardada!');
+        });
+
+        btnFecha.addEventListener('click',flechaBtn);
+        titulo.addEventListener('click',flechaBtn);
+
+        btnFecha.addEventListener('blur',()=>{
+            escribir('El boton perdio el foco!');
+        });
+
+        btnFecha.removeEventListener('click',flechaBtn);
+        
 
     </script>
 </body>
