@@ -1,0 +1,25 @@
+
+body{
+    background-color: #101010;
+    color:white;
+}
+
+.pokamio{
+    border: 2px solid #ffffff90;
+    padding: 16px;
+    margin-bottom: 16px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    img{
+        width: 60px;
+        object-fit: cover;
+    }
+    p{
+
+        font-size: 24px;
+        margin: 0px;
+        font-weight: bold;
+    }
+}
