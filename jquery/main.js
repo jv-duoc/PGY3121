@@ -4,22 +4,24 @@ btnSaludar.addEventListener('click',()=>{
     const inputNombre = document.getElementById('input-nombre');
     const nombre = inputNombre.value;
     const contenedorSaludo = document.getElementById('contenedor-saludo');
-    const parrafo = document.getElementById('texto-saludo');
     
-    if(inputNombre.reportValidity()){
-        removerClases(parrafo);
-        parrafo.classList.add('alert-primary');
-        parrafo.innerText = 'Hola '+nombre+'!';
-        
+
+    contenedorSaludo.innerHTML = '';
+
+    let element = document.createElement('div');
+    element.setAttribute('role','alert');
+    element.classList.add('alert');
+
+    if(inputNombre.reportValidity() && nombre){
+        element.classList.add('alert-primary');
+        element.innerText = 'Hola '+nombre+'👋🏼 !';
+        contenedorSaludo.appendChild(element);
     }else{
-        removerClases(parrafo);
-        parrafo.classList.add('alert-danger');
-        parrafo.innerText = 'Debes escribir tu nombre en el input!';
+        element.classList.add('alert-danger');
+        element.innerText = '❌ Debes escribir tu nombre!';
+        contenedorSaludo.appendChild(element);
     }
 
     contenedorSaludo.style = 'display:block';
 });
 
-function removerClases(elemento){
-    elemento.classList.remove('alert-primary','alert-danger');
-}
