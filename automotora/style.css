@@ -1,0 +1,42 @@
+body{
+    background-color: #eee;
+}
+
+.lista-autos{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
+  grid-auto-rows: minmax(320px, auto);
+  gap: 16px;
+
+  .auto{
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    transition: all linear .2s;
+
+    &:hover{
+        transform: scale(1.05);
+    }
+
+    .datos{
+        position: absolute;
+        width: 100%;
+        bottom: 0px;
+        padding: 8px;
+        background-color: #10101080;
+        backdrop-filter: blur(4px);
+        p{
+            margin:0px;
+            color:white;
+        }
+    }
+    img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        z-index: -1;
+    }
+  }
+}
