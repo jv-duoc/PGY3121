@@ -1,4 +1,4 @@
-const urlAutos = 'https://pgy-api.vercel.app/api/automotora/autos';//GET,POST,DELETE
+const urlAutos = '/api-falsa/autos.json';//GET,POST,DELETE
 const urlDolar = 'https://mindicador.cl/api';
 const contenedorAutos = document.getElementById('lista');
 
@@ -87,8 +87,13 @@ async function cargarImagen(auto,elemento){
     try {
         const solicitudDetallada = await fetch(urlAutos+'?id='+auto.id);
         const datos = await solicitudDetallada.json();
-        elemento.querySelector('.imagen').setAttribute('src',datos.image)
-        return true;
+        if(datos && datos.image){
+            elemento.querySelector('.imagen').setAttribute('src',datos.image)
+            return true;
+        }else{
+            return false;
+        }
+        
     } catch (error) {
         return false;
     }
