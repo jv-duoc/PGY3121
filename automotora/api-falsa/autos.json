@@ -1,0 +1,23 @@
+[
+    {
+        "marca":"Kia",
+        "modelo":"Morning",
+        "fecha":"2024-05-05",
+        "precio":3000000,
+        "año":2015
+    },
+    {
+        "marca":"Kia",
+        "modelo":"Rio 5",
+        "fecha":"2024-02-05",
+        "precio":3600000,
+        "año":2022
+    },
+    {
+        "marca":"Chevrolet",
+        "modelo":"Luv",
+        "fecha":"2024-02-8",
+        "precio":600000,
+        "año":1998
+    }
+]
