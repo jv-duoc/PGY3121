@@ -1,5 +1,4 @@
 const urlAutos = 'https://pgy-api.vercel.app/api/automotora/autos';//GET,POST,DELETE
-const urlLogin = 'https://pgy-api.vercel.app/api/automotora/login';//POST
 const urlDolar = 'https://mindicador.cl/api';
 const contenedorAutos = document.getElementById('lista');
 
