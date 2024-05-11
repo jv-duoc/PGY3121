@@ -25,7 +25,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link">Carrito</a>
+                <a class="nav-link" data-bs-toggle="offcanvas" href="#carrito" >Carrito</a>
               </li>
           </ul>
           <form class="d-flex" role="search">
@@ -39,25 +39,28 @@
     <div class="container my-5">
       <h1>Inventario</h1>
       <div class="container">
-        <div class="lista-autos">
-            <div class="auto">
+        <div class="lista-autos" id="lista">
+            <div class="auto" id="auto-plantilla">
                 <img class="imagen" src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png">
-                <div class="datos">
+                <div  class="datos">
                     <p class="nombre">Marca Modelo</p>
                     <p class="año">2024</p>
                     <p class="precio">$999.999</p>
                     <p class="tiempo">Ingresado hace 2 dias.</p>
                 </div>
             </div>
-            <div class="auto">
-                <img class="imagen" src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png">
-                <div class="datos">
-                    <p class="nombre">Marca Modelo</p>
-                    <p class="año">2024</p>
-                    <p class="precio">$999.999</p>
-                    <p class="tiempo">Ingresado hace 2 dias.</p>
-                </div>
-            </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="carrito" aria-labelledby="offcanvasExampleLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasExampleLabel">Carrito</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <div id="carrito-contenedor">
+
         </div>
       </div>
     </div>
