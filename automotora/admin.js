@@ -4,6 +4,7 @@ const urlLogin = 'https://pgy-api.vercel.app/api/automotora/login';//POST
 async function login(){
     const botonLogin = document.getElementById('btn-login');
     botonLogin.setAttribute('disabled',true);
+    botonLogin.classList.add('loading');
     try {
 
         const usuario = document.getElementById('usuario').value;
@@ -29,4 +30,7 @@ async function login(){
     } catch (error) {
         console.log(error);
     }
+
+    botonLogin.removeAttribute('disabled');
+    botonLogin.classList.remove('loading');
 }
