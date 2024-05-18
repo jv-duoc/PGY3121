@@ -4,4 +4,5 @@ from Automotora import views
 
 urlpatterns = [
     path('',views.inicio),
+    path('info',views.info)
 ]
