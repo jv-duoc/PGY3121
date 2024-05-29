@@ -16,3 +16,10 @@ class Auto(models.Model):
 
     def __str__(self):
         return str(self.año)+' '+self.marca+' '+self.modelo
+
+class Tipo(models.Model):
+    id = models.UUIDField(primary_key = True, default = uuid.uuid4, editable = False)
+    nombre = models.CharField(max_length=255, null = False)
+
+    def __str__(self):
+        return self.nombre
