@@ -7,6 +7,8 @@
             {% for i in autos %}
             <div class="auto" id="auto-plantilla">
                 {% if i.imagen %}
+                <img class="imagen" src="{{ i.imagen.url }}">
+                {% else %}
                 <img class="imagen" src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png">
                 {% endif %}
                 <div  class="datos">
