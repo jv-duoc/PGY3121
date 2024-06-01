@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from .models import Auto
+from .models import Auto,Tipo
+import datetime
 
 # Create your views here.
 
@@ -14,4 +15,19 @@ def inicio(request):
     return render(request,'inicio.html',contexto)
 
 def info(request):
-    return render(request,'info.html')
+    hora_actual = datetime.datetime.now()
+    bolsa = {
+        "hora":hora_actual,
+        "version":"1.0"
+    }
+    return render(request,'info.html',bolsa)
+
+def listar_tipos(request):
+
+    tipos = Tipo.objects.all()
+
+    bolsa = {
+        "tipos":tipos
+    }
+
+    return render(request,'tipos.html',bolsa)
