@@ -1,0 +1,18 @@
+<h1>Lista de tareas:</h1>
+
+<a href="/nueva">Nueva tarea</a>
+
+{% for t in tareas %}
+    <div>
+        <p>
+            {% if t.completado %}
+                ✓
+            {% else %}
+                X
+            {% endif %}
+            {{t.texto}}
+        </p>
+        <a href="/editar/{{t.id}}">Editar</a>
+        <a href="/borrar/{{t.id}}">Borrar</a>
+    </div>
+{% endfor %}

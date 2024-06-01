@@ -1,0 +1,7 @@
+<h1>Nueva tarea:</h1>
+<h2>Metodo: {{metodo}}</h2>
+<form action="/nueva" method="POST">
+    {% csrf_token %}
+    {{form}}
+    <input type="submit" value="Submit">
+</form>
