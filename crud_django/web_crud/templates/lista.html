@@ -1,6 +1,6 @@
 <h1>Lista de tareas:</h1>
 
-<a href="/nueva">Nueva tarea</a>
+<a href="{% url "nueva" %}">Nueva tarea</a>
 
 {% for t in tareas %}
     <div>
@@ -12,7 +12,7 @@
             {% endif %}
             {{t.texto}}
         </p>
-        <a href="/editar/{{t.id}}">Editar</a>
-        <a href="/borrar/{{t.id}}">Borrar</a>
+        <a href="{% url "editar" t.id %}">Editar</a>
+        <a href="{% url "borrar" t.id %}">Borrar</a>
     </div>
 {% endfor %}

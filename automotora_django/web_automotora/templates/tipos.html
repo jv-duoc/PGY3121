@@ -6,8 +6,9 @@
 
     <ul>
         {% for tipo_actual in tipos %}
-            <li>{{tipo_actual.nombre}}</li>
+            <li>{{tipo_actual.stock}} : {{tipo_actual.nombre}}</li>
         {% endfor %}
     </ul>
 
+    
 {% endblock content %}

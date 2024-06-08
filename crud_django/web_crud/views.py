@@ -1,5 +1,5 @@
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 
 from web_crud.forms import NuevaTareaForm
 from .models import Tarea
@@ -16,7 +16,33 @@ def lista(request):
     return render(request,'lista.html',context)
 
 def borrar(request,id):
+
+    if request.method == 'POST':
+        tarea = Tarea.objects.get(id = id)
+        tarea.delete()
+        return redirect('lista')
+
     return render(request,'borrar.html',{"id":id})
+
+def editar(request,id):
+    tarea = Tarea.objects.get(id = id)
+
+    if request.method == 'POST':
+        form = NuevaTareaForm(request.POST)
+        if form.is_valid():
+            texto = form.cleaned_data.get('texto')
+            completado = form.cleaned_data.get('completado')
+            tarea.texto = texto
+            tarea.completado = completado
+            tarea.save()
+            return redirect('lista')
+    else:
+        form = NuevaTareaForm(initial={
+                "texto":tarea.texto,
+                "completado":tarea.completado
+            })
+
+    return render(request,'editar.html',{"tarea":tarea,"form":form})
 
 def nueva(request):
 
@@ -37,7 +63,7 @@ def nueva(request):
             nueva_tarea.completado = completado_del_form
 
             nueva_tarea.save()
-            return HttpResponseRedirect('/')
+            return redirect('lista')
 
     else:
         formulario = NuevaTareaForm()

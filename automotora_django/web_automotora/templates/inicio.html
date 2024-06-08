@@ -1,8 +1,21 @@
 {% extends "plantilla.html" %}
 
 {% block content %}
-    <h1>Inventario</h1>
+    <h1>Inventario, {{datos.autos_totales}} autos en stock</h1>
+      
       <div class="container">
+        <div class="tipos">
+            {% for t in tipos %}
+                <a href="?tipo={{t.nombre}}" class="btn btn-primary">{{t.nombre}}</a>
+            {% endfor %}
+        </div>
+        <div>
+            <form action="" method="GET">
+                <label>Precio max</label>
+                <input name="precio_max" type="number" value="{{precio_max}}">
+                <input type="submit" class="btn btn-primary" value="Buscar">
+            </form>
+        </div>
         <div class="lista-autos" id="lista">
             {% for i in autos %}
             <div class="auto" id="auto-plantilla">
@@ -12,7 +25,7 @@
                 <img class="imagen" src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png">
                 {% endif %}
                 <div  class="datos">
-                    <p class="nombre">{{ i.marca }} {{i.modelo}}</p>
+                    <p class="nombre">{{ i.marca }} {{i.modelo}} - {{i.tipo.nombre}}</p>
                     <p class="año">{{i.año}}</p>
                     <p class="precio">{{i.precio}}</p>
                     <p class="tiempo">{{i.fecha}}</p>
