@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+ <h1>Entrar</h1>
+
+ {% if error %}
+ <div class="alert alert-danger" role="alert">
+    {{error}}
+  </div>
+ {% endif %}
+
+ <form method="POST">
+    {% csrf_token %}
+    <input type="email" class="form-control" name="usuario" id="usuario" placeholder="usuario">
+    <input type="password" class="form-control" name="password" id="password" placeholder="contraseña">
+    <input type="submit" class="btn btn-primary" value="Entrar">
+ </form>
+{% endblock contenido %}

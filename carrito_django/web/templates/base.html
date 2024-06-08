@@ -1,6 +1,7 @@
 {% load static %}
-<!doctype html>
-<html lang="es">
+<!doctype html >
+<html lang="es" 
+>
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -21,11 +22,37 @@
               <li class="nav-item">
                 <a class="nav-link" href="{% url "inicio" %}">Inicio</a>
               </li>
+
               <li class="nav-item">
-                <a class="nav-link" href="#">Login</a>
+                <a class="nav-link" href="{% url "cuenta" %}">Mi cuenta</a>
               </li>
+             
 
             </ul>
+          </div>
+          <div class="derecha">
+            <ul class="navbar-nav">
+              {% if user.is_authenticated %}
+              <li class="nav-item">
+                <a class="nav-link" ">Hola {{user.username}}</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url "logout" %}">Cerrar sesión</a>
+              </li>
+              {% else %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url "login" %}">Login</a>
+              </li>
+              {% endif %}
+              
+
+
+              
+
+            </ul>
+            
+          
+
           </div>
         </div>
       </nav>
