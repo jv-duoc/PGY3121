@@ -1,6 +1,10 @@
+{% extends "base.html" %}
+
+{% block contenido %}
 <h2>¿Segurisimo de borrar la tarea numero {{id}}?</h2>
 
 <form action="/borrar/{{id}}" method="POST">
     {% csrf_token %}
     <input type="submit" value="Si">
 </form>
+{% endblock contenido %}

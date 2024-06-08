@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+ <h1>Iniciar sesión</h1>
+ {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+<form method="POST">
+    {% csrf_token %}
+    <div class="mb-2">
+        <label for="usuario">Usuario</label>
+        <input class="form-control" type="email" name="usuario" id="usuario">
+     </div>
+     <div class="mb-2">
+        <label for="usuario">Contraseña</label>
+        <input class="form-control" type="password" name="password" id="password">
+     </div>
+
+     <input type="submit" value="Entrar" class="btn btn-success">
+</form>
+{% endblock contenido %}
