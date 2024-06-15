@@ -5,4 +5,18 @@
  <p>Usuario: {{user.username}}</p>
  <p>Correo: {{user.email}}</p>
  <p>Nombre: {{user.name}}</p>
+
+ <h2>Compras:</h2>
+    <ul>
+        {% for compra in compras %}
+        <li>
+            <h3>Compra del {{compra.fecha}}</h3>
+            <p>Dirección de envio: {{compra.direccion}}</p>
+            <ul>
+                {% for producto in compra.productos.all %}
+                <li>{{producto.nombre}} x {{producto.cantidad}}</li>
+                {% endfor %}
+            </ul>
+        </li>
+        {% endfor %}
 {% endblock contenido %}

@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% block contenido %}
+    <h1>Carrito de compras:</h1>
+    <form method="post">
+        {% csrf_token %}
+        <div id="carrito">
+
+        </div>
+
+        <p >Total: $<span id="total"></span></p>
+
+
+        <label for="direccion">Direccion de envio:</label>
+        <input type="text" class="form-control mb-1" name="direccion">
+
+        <input type="submit" class="btn btn-primary" value="Comprar">
+        <button onclick="vaciarCarro()" class="btn btn-danger">Vaciar carro</button>
+    </form>
+{% endblock contenido %}
+
+
+{% block scripts %}
+
+<script>
+
+    var productos = [];
+    cargarProductos();
+
+    function vaciarCarro(){
+        localStorage.removeItem('carro');
+        document.getElementById('carrito').innerHTML = '';
+        document.getElementById('total').textContent = 0;
+    }
+
+    function actualizarCarrito(){
+        totalCompra = 0;
+
+        const carro = JSON.parse(localStorage.getItem('carro')) || [];
+        const carrito = document.getElementById('carrito');
+        for(const producto of carro){
+            const elemento = document.createElement('p');
+            const productoEncontrado = productos.find(p => p.id === producto.id);
+            const precioTotal = producto.cantidad * productoEncontrado.precio;
+            elemento.textContent = `${productoEncontrado.nombre} x ${producto.cantidad} $ ${precioTotal}`;
+            carrito.appendChild(elemento);
+            totalCompra += precioTotal;
+
+            let inputForm = document.createElement('input');
+            inputForm.type = 'hidden';
+            inputForm.name = 'productos_id';
+            inputForm.value = producto.id;
+
+            carrito.appendChild(inputForm);
+
+            inputForm = document.createElement('input');
+            inputForm.type = 'hidden';
+            inputForm.name = 'productos_cantidad';
+            inputForm.value = producto.cantidad;
+            carrito.appendChild(inputForm);
+        }
+        document.getElementById('total').textContent = totalCompra;
+    }
+
+    
+
+    async function cargarProductos(){
+        try{
+            const solicitud = await fetch('/api/productos');
+            productos = await solicitud.json();
+        }
+        catch(error){
+            Swal.fire('Error', error.message, 'error');
+        }
+        {% for m in messages %}
+            Swal.fire('{{m}}');
+        {% endfor %}
+        actualizarCarrito();
+    }
+
+</script>
+
+{% endblock scripts %}

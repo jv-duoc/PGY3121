@@ -1,4 +1,58 @@
 {% extends "base.html" %}
 {% block contenido %}
  <h1>Tiendita</h1>
+
+ <div class="table-responsive">
+    <table class="table">
+        <thead>
+            <th>
+                Nombre
+            </th>
+            <th>Precio</th>
+            <th>Stock</th>
+        </thead>
+        <tbody>
+            {% for p in productos %}
+            <tr>
+                <td>{{p.nombre}}</td>
+                <td>${{p.precio}}</td>
+                <td>{{p.stock}}</td>
+                <td>
+                    <a onclick="agregarAlCarro({{p.id}})" class="btn btn-primary">Agregar al carrito</a>
+                </td>
+            </tr>
+            {% endfor %}
+            
+        </tbody>
+     </table>
+ </div>
+
 {% endblock contenido %}
+
+{% block scripts %}
+
+<script>
+
+    /*
+    un producto del carro sera asi:
+    {
+        id,
+        cantidad
+    }
+    */
+
+    function agregarAlCarro(id){
+        const carro = JSON.parse(localStorage.getItem('carro')) || [];    
+        const producto = carro.find(p => p.id === id);
+        if(producto){
+            producto.cantidad += 1;
+        }else{
+            carro.push({id, cantidad: 1});
+        }
+        Swal.fire('Agregado al carrito!');
+        localStorage.setItem('carro', JSON.stringify(carro));
+    }
+ 
+</script>
+
+{% endblock scripts %}
