@@ -71,6 +71,7 @@
         catch(error){
             Swal.fire('Error', error.message, 'error');
         }
+        
         {% for m in messages %}
             Swal.fire('{{m}}');
         {% endfor %}
